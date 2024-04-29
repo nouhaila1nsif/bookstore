@@ -11,7 +11,7 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 public class CustomerController {
-    private CustomerService customerService;
+     CustomerService customerService;
     @RequestMapping("/createCustomer")
     public String createCustomer(){
         return "CreateCustomer";
