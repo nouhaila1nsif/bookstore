@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Utilisateurs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        h2 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        td {
+            background-color: #ffffff;
+        }
+        .roles {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .role {
+            margin-right: 5px;
+            padding: 5px 10px;
+            background-color: #6c757d;
+            color: #ffffff;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Liste des Utilisateurs</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nom d'Utilisateur</th>
+        <th>E-mail</th>
+        <th>Rôles</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Utilisation de Thymeleaf pour itérer sur la liste d'utilisateurs -->
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <!-- Utilisation de Thymeleaf pour afficher les rôles de l'utilisateur -->
+            <span th:each="role : ${user.roles}" th:text="${role.role} + ' '"></span>
+        </td>
+        <td>
+            <!-- Bouton pour modifier l'utilisateur -->
+            <a th:href="@{'/users/edit/' + ${user.id}}" class="btn btn-primary">Modifier</a>
+
+            <!-- Formulaire pour supprimer l'utilisateur -->
+            <form th:action="@{'/users/delete/' + ${user.id}}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

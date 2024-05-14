@@ -13,7 +13,7 @@ import java.time.LocalDate; // Consider using LocalDate instead of Date
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Assuming auto-increment

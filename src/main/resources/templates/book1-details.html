@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 50px;
+        }
+        .container {
+            max-width: 800px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007bff;
+        }
+        .book-details {
+            margin-top: 20px;
+        }
+        .book-details img {
+            width: 30%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+<body>
+<header>
+    <div th:replace="~{Template}"></div>
+</header>
+<div class="container">
+    <h2>Book Details</h2>
+    <div class="book-details">
+        <img th:src="${book.coverImage}" alt="Cover Image">
+        <h4 th:text="${book.title}"></h4>
+        <p><strong>Author:</strong> <span th:text="${book.author}"></span></p>
+        <p><strong>Publication Year:</strong> <span th:text="${book.publicationYear}"></span></p>
+        <p><strong>Description:</strong> <span th:text="${book.description}"></span></p>
+        <hr>
+        <h3>Content</h3>
+        <p th:text="${book.content}"></p>
+        <!-- Ajoutez d'autres détails du livre selon vos besoins -->
+    </div>
+    <!-- Bouton pour retourner à la liste des livres ajoutés -->
+    <a href="/books/added" class="btn btn-secondary mt-3">Back to Added Books</a>
+</div>
+
+</body>
+</html>

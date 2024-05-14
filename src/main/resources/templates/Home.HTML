@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .btn:last-child {
+            margin-right: 0;
+        }
+    </style>
+<body>
+<header>
+    <div th:replace="~{Template}"></div>
+</header>
+<div layout:fragment="content">
+<div class="container">
+    <h1>Welcome to Our Bookstore</h1>
+    <a th:href="@{/users/all}"  th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="btn">Users</a>
+    <a th:href="@{/users/new}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="btn">Add user</a>
+    <a th:href="@{/books/added}" class="btn">Browse</a>
+    <a th:href="@{/books/create}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="btn">Add New Book</a> <!-- Ajouter ce lien -->
+</div>
+</div>
+</body>
+</html>

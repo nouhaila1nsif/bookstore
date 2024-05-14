@@ -24,7 +24,7 @@ public class Customer {
     // Other customer properties...
 
     @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
+    private List<Orders> orders;
 
     public Customer(Long userId) {
 

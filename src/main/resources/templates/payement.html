@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007bff; /* Bleu Bootstrap */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff; /* Bleu Bootstrap */
+            color: white;
+        }
+
+        td {
+            border: 1px solid #ddd;
+        }
+    </style>
+
+<header>
+    <div th:replace="~{Template}"></div>
+</header>
+<body>
+
+<div class="container">
+    <h1>Liste des Paiements</h1>
+
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Payment Method</th>
+            <th>Amount</th>
+            <th>Timestamp</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Utilisation de Thymeleaf pour itérer sur la liste des paiements -->
+        <tr th:each="payement : ${payement}">
+            <td th:text="${payement.id}"></td>
+            <td th:text="${payement.paymentMethod}"></td>
+            <td th:text="${payement.amount}"></td>
+            <td th:text="${payement.timestamp}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Liens vers Bootstrap (JS) et jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

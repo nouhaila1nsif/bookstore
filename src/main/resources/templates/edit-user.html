@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier l'Utilisateur</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* Styles spécifiques au formulaire */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h2>Modifier l'Utilisateur</h2>
+
+    <!-- Formulaire pour mettre à jour les informations de l'utilisateur -->
+    <form id="editUserForm" th:action="@{/users/update}" method="post" th:object="${user}" onsubmit="return validateForm()">
+
+        <!-- Champ caché pour l'ID de l'utilisateur -->
+        <input type="hidden" th:field="*{id}" />
+
+        <!-- Champ pour le nom d'utilisateur -->
+        <div class="form-group">
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" id="username" name="username" th:value="${user.username}" required>
+        </div>
+
+        <!-- Champ pour l'adresse e-mail -->
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" th:value="${user.email}" required>
+        </div>
+
+        <!-- Liste des rôles de l'utilisateur -->
+        <div class="form-group">
+            <label for="roles">Rôles:</label>
+            <select id="roles" name="roles" multiple="multiple">
+                <option th:each="role : ${roles}" th:value="${role}" th:selected="${user.roles.contains(role)}" th:text="${role}"></option>
+            </select>
+        </div>
+
+        <!-- Bouton pour sauvegarder les modifications -->
+        <button type="submit">Enregistrer</button>
+    </form>
+
+    <!-- Bouton pour retourner à la liste des utilisateurs -->
+    <a href="/users/all" class="btn btn-secondary mt-3">Retour à la liste des utilisateurs</a>
+</div>
+
+<script>
+    // Fonction de validation du formulaire
+    function validateForm() {
+        var username = document.getElementById('username').value;
+        var email = document.getElementById('email').value;
+
+        if (!username || !email) {
+            alert('Veuillez remplir tous les champs obligatoires.');
+            return false;
+        }
+
+        return true;
+    }
+</script>
+</body>
+
+</html>

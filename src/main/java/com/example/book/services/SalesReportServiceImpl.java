@@ -1,7 +1,7 @@
 package com.example.book.services;
 
 import com.example.book.entities.Book;
-import com.example.book.entities.Order;
+import com.example.book.entities.Orders;
 import com.example.book.entities.SalesReportData; // Import the SalesReportData class
 import com.example.book.repositories.BookRepository;
 import com.example.book.repositories.OrderRepository;
@@ -24,11 +24,11 @@ public class SalesReportServiceImpl implements SalesReportService {
     @Override
     public List<SalesReportData> generateSalesReportByPeriod(LocalDate startDate, LocalDate endDate) {
         // Implement logic to retrieve orders within the date range (using orderRepository)
-        List<Order> orders = orderRepository.findByOrderDateBetween(startDate, endDate);
+        List<Orders> orders = orderRepository.findByOrderDateBetween(startDate, endDate);
 
         // Process orders to calculate sales data and populate SalesReportData objects
         List<SalesReportData> reportData = new ArrayList<>();
-        for (Order order : orders) {
+        /*for (Order order : orders) {
             // Iterate through order items (assuming single-item or multi-item orders are handled)
             for (Book book : order.getBooks()) { // Assuming 'getBooks' method exists for multi-item orders
                 SalesReportData data = new SalesReportData();
@@ -37,7 +37,7 @@ public class SalesReportServiceImpl implements SalesReportService {
                 data.setTotalRevenue(book.getPrice() * order.getQuantity()); // Calculate total revenue per item
                 reportData.add(data);
             }
-        }
+        }*/
 
         return reportData;
     }

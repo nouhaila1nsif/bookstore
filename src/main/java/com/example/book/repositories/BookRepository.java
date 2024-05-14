@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-    List<Book> findByQuantityGreaterThan(int i);
+   // List<Book> findByQuantityGreaterThan(int i);
 
     // You can add custom query methods here if needed
 }

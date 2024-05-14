@@ -1,50 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Story</title>
-    <!-- Bootstrap CSS CDN -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Book Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        /* Styles CSS */
         body {
-            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 50px;
         }
-        .book-content {
+        .container {
             max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
             background-color: #fff;
-            font-size: 16px;
-            line-height: 1.6;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007bff;
+        }
+        .book-details {
+            margin-top: 20px;
+        }
+        .book-details img {
+            width: 30%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-<div class="book-content">
-    <h1>Book Title</h1>
-    <p>Author: Author Name</p>
-    <p>Published: Year</p>
-    <hr>
-    <h2>Book Story</h2>
-    <p>
-        Here you can include the full story or text of the book. This is just a placeholder example.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet tortor et tortor luctus tristique.
-        Integer in purus ut lorem dictum tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-        posuere cubilia curae; Sed accumsan lectus sit amet ante volutpat, in condimentum magna vestibulum.
-        Maecenas elementum felis nec condimentum lobortis.
-    </p>
-    <p>
-        Curabitur eget maximus nisl. Suspendisse potenti. Nam vitae libero aliquet, pulvinar diam ac, commodo lectus.
-        Sed auctor est eget magna hendrerit, nec tempus felis scelerisque. Integer nec interdum sem.
-        Vivamus luctus, sapien sit amet malesuada congue, justo mauris consequat est, ut consectetur ligula leo non neque.
-    </p>
-    <a href="browse.html" class="btn btn-primary mt-3">Back to Browse</a>
+<div class="container">
+    <h2>Book Details</h2>
+    <div class="book-details">
+        <img src="${book.coverImage}" alt="Cover Image">
+        <h4>${book.title}</h4>
+        <p><strong>Author:</strong> ${book.author}</p>
+        <p><strong>Publication Year:</strong> ${book.publicationYear}</p>
+        <p><strong>Description:</strong> ${book.description}</p>
+        <hr>
+        <h3>Content</h3>
+        <p>${book.content}</p>
+        <!-- Ajoutez d'autres détails du livre selon vos besoins -->
+    </div>
+    <!-- Bouton pour retourner à la liste des livres ajoutés -->
+    <a href="/books/added" class="btn btn-secondary mt-3">Back to Added Books</a>
+
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

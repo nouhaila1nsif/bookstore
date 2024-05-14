@@ -1,6 +1,6 @@
 package com.example.book.repositories;
 
-import com.example.book.entities.Order;
+import com.example.book.entities.Orders;
 import com.example.book.entities.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

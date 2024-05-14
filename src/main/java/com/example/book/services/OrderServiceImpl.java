@@ -1,9 +1,9 @@
 package com.example.book.services;
-import com.example.book.entities.Order;
+import com.example.book.entities.Orders;
 import com.example.book.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+/*
 import java.util.List;
 import java.util.Optional;
 
@@ -14,17 +14,17 @@ public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
 
     @Override
-    public List<Order> getAllOrders() {
+    public List<Orders> getAllOrders() {
         return orderRepository.findAll();
     }
 
     @Override
-    public Optional<Order> getOrderById(Long id) {
+    public Optional<Orders> getOrderById(Long id) {
         return orderRepository.findById(id);
     }
 
     @Override
-    public Order saveOrder(Order order) {
+    public Orders saveOrder(Orders order) {
         return null;
     }
 
@@ -47,4 +47,4 @@ public class OrderServiceImpl implements OrderService {
     public void deleteOrder(Long id) {
         orderRepository.deleteById(id);
     }
-}
+}*/

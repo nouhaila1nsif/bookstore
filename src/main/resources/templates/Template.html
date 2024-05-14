@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Liens vers Bootstrap et Bootstrap Icons -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.css">
+
+    <!-- Scripts Bootstrap (inclus jQuery) -->
+    <script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* Définition des variables de couleur */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #0056b3;
+            --bg-color: #f8f9fa;
+            --card-bg-color: #f9f9f9;
+            --card-border-color: #ddd;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            padding-top: 70px; /* Espace pour le header fixe */
+            padding-bottom: 60px; /* Espace pour le footer fixe */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto; /* Centre le contenu */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        h2 {
+            color: var(--primary-color);
+        }
+
+        /* Styles pour la carte de livre */
+        .book-card {
+            padding: 20px;
+            border: 1px solid var(--card-border-color);
+            border-radius: 8px;
+            background-color: var(--card-bg-color);
+            margin-bottom: 20px;
+        }
+
+        .book-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* Boutons d'action */
+        .btn-action {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        /* Footer stylisé */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{/images/book_logo.png}" alt="Logo" style="height: 30px;">
+            Bookstore
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/payement}">Payement</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/books/home}">Home</a>
+                </li><li class="nav-item" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                <a class="nav-link active" th:href="@{/books/create}">Add New Book</a>
+            </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="genreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"  th:text="${#authentication.name}">user
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="genreDropdown">
+                        <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+                        <li><a class="dropdown-item" th:href="@{/login}">change user</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<footer class="text-center fixed-bottom text-lg-start bg-light text-muted">
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Copyright:
+        <a class="text-reset fw-bold" href="#">BOOKS</a>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+
+
+<body>
+<header>
+    <div th:replace="~{Template}"></div>
+</header>
+<div class="container">
+    <h2>Edit Book</h2>
+    <form th:action="@{/books/update}" method="post">
+        <input type="hidden" name="id" th:value="${book.id}">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" name="title" th:value="${book.title}" required>
+        </div>
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" class="form-control" id="author" name="author" th:value="${book.author}" required>
+        </div>
+        <div class="form-group">
+            <label for="publicationYear">Publication Year:</label>
+            <input type="number" class="form-control" id="publicationYear" name="publicationYear" th:value="${book.publicationYear}">
+        </div>
+        <div class="form-group">
+            <label for="language">Language:</label>
+            <input type="text" class="form-control" id="language" name="language" th:value="${book.language}">
+        </div>
+        <div class="form-group">
+            <label for="coverImage">Cover Image URL:</label>
+            <input type="text" class="form-control" id="coverImage" name="coverImage" th:value="${book.coverImage}">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description" rows="4" th:text="${book.description}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <textarea class="form-control" id="content" name="content" rows="6" th:text="${book.content}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+
+    <!-- Bouton pour retourner à la liste des livres ajoutés -->
+    <a href="/books/added" class="btn btn-secondary mt-3">Back to Added Books</a>
+</div>
+</div>
+</body>
+</html>

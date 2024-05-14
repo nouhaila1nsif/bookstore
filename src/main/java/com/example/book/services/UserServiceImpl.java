@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+
     @Override
     public User getUserByUsername(String username) {
         // Implémentation de la récupération d'un utilisateur par nom d'utilisateur
@@ -47,6 +48,16 @@ public class UserServiceImpl implements UserService {
         // Implémentation de l'enregistrement ou de la mise à jour d'un utilisateur
         return userRepository.save(user);
     }
+    public void signIn(User user) {
+        // You can implement sign-in logic here if needed
+        System.out.println("User signed in: " + user.getUsername());
+    }
+    public void signUp(User user) {
+        // Save the user to the database
+        userRepository.save(user);
+        System.out.println("User signed up: " + user.getUsername());
+    }
+
 
     @Override
     public void deleteUser(Long id) {

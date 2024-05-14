@@ -9,6 +9,10 @@ public interface UserService {
     User registerUser(User user);
 
     User getUserByUsername(String username);
+    void signIn(User user);
+
+    void signUp(User user);
+
 
     List<User> getAllUsers();
     Optional<User> getUserById(Long id);

@@ -1,6 +1,7 @@
 package com.example.book.services;
+import com.example.book.enums.PaymentMethod;
 
-import com.example.book.entities.Order;
+import com.example.book.entities.Orders;
 import com.example.book.entities.Payment;
 import com.example.book.repositories.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,9 @@ public class PaymentServiceImpl implements PaymentService {
     private PaymentRepository paymentRepository;
 
     @Override
-    public Payment createPayment(Order order, String paymentMethod, double amount) {
+    public Payment createPayment(Orders order, PaymentMethod paymentMethod, double amount) {
         Payment payment = new Payment();
-        payment.setOrder(order);
+        //payment.setOrder(order);
         payment.setPaymentMethod(paymentMethod);
         payment.setAmount(amount);
         payment.setTimestamp(LocalDateTime.now());

@@ -1,5 +1,5 @@
 package com.example.book.entities;
-import jakarta.persistence.*;
+/*import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,4 +25,4 @@ public class Inventory {
     private int quantity;
 
     // Getters and setters
-}
+}*/
